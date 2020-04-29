@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todoapp/widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -7,6 +8,7 @@ class TasksScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.greenAccent[400],
       floatingActionButton: FloatingActionButton(
+        onPressed: () {},
         backgroundColor: Colors.greenAccent,
         child: Icon(Icons.add),
       ),
@@ -44,13 +46,16 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               height: 300,
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  )),
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+              child: TasksList(),
             ),
           ),
         ],
