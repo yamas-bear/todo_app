@@ -1,21 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todoapp/widgets/tasks_list.dart';
 import 'add_task_screen.dart';
-import 'package:todoapp/models/task.dart';
+import 'package:todoapp/widgets/tasks_list.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
+import 'package:todoapp/models/task_data.dart';
+import 'package:provider/provider.dart';
 
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: 'tibi'),
-    Task(name: 'tibbi2'),
-    Task(name: 'ttibbi3'),
-  ];
-
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +19,9 @@ class _TasksScreenState extends State<TasksScreen> {
             context: context,
             builder: (context) => AddTasksScreen(
               (newTaskTitle) {
-                setState(() {
-                  tasks.add(Task(name: newTaskTitle));
-                });
+//                setState(() {
+//                  tasks.add(Task(name: newTaskTitle));
+//                });
               },
             ),
           );
@@ -62,7 +53,8 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '12 tasks',
+                  //TaskDataのtasksの長さを取得している
+                  '${Provider.of<TaskData>(context).taskCount} Tasks',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ],
@@ -79,7 +71,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: TasksList(tasks),
+              child: TasksList(),
             ),
           ),
         ],
